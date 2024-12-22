@@ -4,6 +4,7 @@
 import React from 'react';
 import useSWR from 'swr';
 import { Product } from '@/models/interfaces';
+import MunicipalityCard from '@/components/MunicipalityCard/MunicipalityCard';
 
 
 export default function Municipalities() {

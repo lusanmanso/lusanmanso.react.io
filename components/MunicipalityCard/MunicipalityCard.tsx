@@ -1,10 +1,8 @@
 /* /components/MunicipalityCard/MunicipalityCard.tsx */
 
 import React from 'react'
+import { Municipality } from '@/models/interfaces/municipality'
 
-import { Municipality } from '@/models/interface'
-
-export default function MunicipalityCard
-({id, district_name, name}: Municipality) {
+export default function MunicipalityCard ({id, district_name, name}: Municipality) {
    return <div>{name} ({district_name})</div>
 }

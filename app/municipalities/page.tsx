@@ -3,14 +3,14 @@
 'use client'
 import React from 'react';
 import useSWR from 'swr';
-import { Product } from '@/models/interface';
+import { Municipality } from '@/models/interfaces/municipality'
 import MunicipalityCard from '@/components/MunicipalityCard/MunicipalityCard';
 
 
 export default function Municipalities() {
 
     const fetcher = (url: string) => fetch(url).then(res => res.json())
-    const { data: municipalities, error, isLoading } = useSWR<Product[], Error>('/api/municipalities');
+    const { data: municipalities, error, isLoading } = useSWR<Municipality[], Error>('/api/municipalities');
     
     if (error) return <div>Failed to load</div>;
     if (isLoading) return <div>Loading...</div>;
@@ -23,7 +23,7 @@ export default function Municipalities() {
                 id={municipality.id}
                 name={municipality.name}
                 district_name={municipality.district_name}
-            />
+            />  
         ))}
     </>
 }

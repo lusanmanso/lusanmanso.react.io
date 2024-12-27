@@ -3,7 +3,7 @@
 'use client'
 import React from 'react';
 import useSWR from 'swr';
-import { Product } from '@/models/interfaces';
+import { Product } from '@/models/interface';
 import MunicipalityCard from '@/components/MunicipalityCard/MunicipalityCard';
 
 

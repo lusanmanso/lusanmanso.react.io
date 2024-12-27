@@ -2,6 +2,7 @@
 import React from 'react';
 import useSWR from 'swr';
 import { Product } from '@/models/interfaces/product';
+import  ProductCard from '@/components/ProductCard/ProductCard';
 
 export default function page() {
 

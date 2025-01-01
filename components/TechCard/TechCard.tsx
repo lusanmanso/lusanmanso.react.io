@@ -1,17 +1,17 @@
-/* /components/ProductCard/ProductCard.tsx */
+/* /components/Card/Card.tsx */
+import { FallbackRouteParams } from 'next/dist/server/request/fallback-params';
 import React from 'react';
 
-interface CardProps {
+interface TechCardProps {
     title: string;
-    category: string;
     image: string;
-    price: number;
     description?: string;
+    rating: number;
 }
 
 import { useState } from 'react';
 
-const Card: React.FC<CardProps> = ({ title, category, image, price, description }) => {
+const TechCard: React.FC<TechCardProps> = ({ title, image,description, rating}) => {
     const [isExpanded, setIsExpanded] = useState(false);
     return (
         <div className="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden transform transition hover:scale-105 hover:shadow-2xl">
@@ -24,8 +24,7 @@ const Card: React.FC<CardProps> = ({ title, category, image, price, description 
             </div>
             <div className="p-4">
                 <h2 className="text-lg font-bold text-gray-800">{title}</h2>
-                <p className="text-sm text-gray-500">{category}</p>
-                <p className="text-lg font-semibold text-green-600">${price.toFixed(2)}</p>
+                <p className="text-lg font-semibold text-red-600">${rating.toFixed(2)}</p>
                {/* Description */}
                <p
                   className={`text-sm text-gray-600 mt-2 text-justify transition-all duration-300 ease-in-out ${
@@ -52,4 +51,4 @@ const Card: React.FC<CardProps> = ({ title, category, image, price, description 
     );
 };
 
-export default Card;
+export default TechCard;

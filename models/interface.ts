@@ -10,3 +10,11 @@ export interface Product {
       count: number;
     };
   }
+
+  export interface Technology{
+    id: number;
+    title: string;
+    description: string;
+    image: string;
+    rating: number;
+  }

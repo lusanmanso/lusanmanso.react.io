@@ -11,7 +11,6 @@ interface TechCardProps {
 import { useState } from 'react';
 
 const TechCard: React.FC<TechCardProps> = ({ title, image,description, rating}) => {
-    const [isExpanded, setIsExpanded] = useState(false);
     return (
         <div className="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden transform transition hover:scale-105 hover:shadow-2xl">
             <div className="w-full h-32 flex items-center justify-center mt-4">

@@ -5,7 +5,7 @@ import useSWR from 'swr';
 import { Product } from '@/models/interface';
 import ProductCard from '@/components/ProductCard/ProductCard';
 
-// Tipo extendido para incluir quantity
+// Extended type to include quantity
 interface CartProduct extends Product {
     quantity: number;
 }
@@ -14,14 +14,14 @@ export default function Products() {
     const fetcher = (url: string) => fetch(url).then(res => res.json());
     const { data: products, error, isLoading } = useSWR<Product[], Error>('/api/products', fetcher);
 
-    // Estados principales
+    // Main states
     const [cart, setCart] = useState<CartProduct[]>([]);
     const [search, setSearch] = useState('');
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
     const [message, setMessage] = useState('');
     const [buying, setBuying] = useState(false);
 
-    // Cargar el carrito desde localStorage
+    // Load cart from localStorage
     useEffect(() => {
         const savedCart = localStorage.getItem('cart');
         if (savedCart) {
@@ -29,12 +29,12 @@ export default function Products() {
         }
     }, []);
 
-    // Guardar el carrito en localStorage cuando cambia
+    // Save cart to localStorage when it changes
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cart));
     }, [cart]);
 
-    // Filtrar productos según la búsqueda
+    // Filter products based on search input
     useEffect(() => {
         if (products) {
             const filtered = products.filter(product =>
@@ -44,7 +44,7 @@ export default function Products() {
         }
     }, [search, products]);
 
-    // Añadir producto al carrito
+    // Add product to cart
     const addToCart = (product: Product) => {
         setCart((prevCart) => {
             const existingProduct = prevCart.find((p) => p.id === product.id);
@@ -55,19 +55,19 @@ export default function Products() {
             }
             return [...prevCart, { ...product, quantity: 1 }];
         });
-        setMessage(`${product.title} fue añadido al carrito`);
+        setMessage(`${product.title} was added to the cart`);
         setTimeout(() => setMessage(''), 3000);
     };
 
-    // Eliminar producto del carrito
+    // Remove product from cart
     const removeFromCart = (index: number) => {
         setCart((prevCart) => prevCart.filter((_, i) => i !== index));
     };
 
-    // Calcular el total del carrito
+    // Calculate cart total
     const total = cart.reduce((sum, product) => sum + product.price * product.quantity, 0);
 
-    // Procesar compra
+    // Handle purchase
     const handleBuy = async () => {
         setBuying(true);
         try {
@@ -78,14 +78,14 @@ export default function Products() {
             });
 
             if (!response.ok) {
-                throw new Error('Error al procesar la compra.');
+                throw new Error('Error processing the purchase.');
             }
 
             const result = await response.json();
-            setMessage(`Compra exitosa. ID de la orden: ${result.order_id}`);
-            setCart([]); // Vaciar el carrito tras la compra
+            setMessage(`Purchase successful. Order ID: ${result.order_id}`);
+            setCart([]); // Clear the cart after purchase
         } catch (error) {
-            setMessage(error.message || 'Hubo un problema con la compra.');
+            setMessage((error as Error).message || 'There was a problem with the purchase.');
         } finally {
             setBuying(false);
         }
@@ -97,21 +97,21 @@ export default function Products() {
 
     return (
         <div className="w-[90%] h-[calc(100vh-4rem)] sm:h-[calc(100vh-5rem)] mx-auto overflow-y-scroll bg-transparent">
-            {/* Mensaje de confirmación */}
+            {/* Confirmation message */}
             {message && <div className="bg-green-100 text-green-700 p-2 rounded mb-4">{message}</div>}
 
-            {/* Input de búsqueda */}
+            {/* Search input */}
             <div className="mb-4">
                 <input
                     type="text"
-                    placeholder="Buscar productos..."
+                    placeholder="Search products..."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     className="w-full p-2 border border-gray-300 rounded"
                 />
             </div>
 
-            {/* Productos filtrados */}
+            {/* Filtered products */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-4">
                 {filteredProducts.map((product) => (
                     <ProductCard
@@ -126,9 +126,9 @@ export default function Products() {
                 ))}
             </div>
 
-            {/* Mostrar carrito */}
+            {/* Show cart */}
             <div className="mt-6 p-4 bg-gray-100 rounded">
-                <h2 className="text-lg font-bold mb-2">Carrito</h2>
+                <h2 className="text-lg font-bold mb-2">Cart</h2>
                 {cart.length > 0 ? (
                     <>
                         {cart.map((item, index) => (
@@ -139,7 +139,7 @@ export default function Products() {
                                     onClick={() => removeFromCart(index)}
                                     className="text-red-500"
                                 >
-                                    Eliminar
+                                    Remove
                                 </button>
                             </div>
                         ))}
@@ -151,11 +151,11 @@ export default function Products() {
                                 buying ? 'bg-gray-500' : 'bg-blue-500 hover:bg-blue-700'
                             } text-white font-bold rounded`}
                         >
-                            {buying ? 'Procesando...' : 'Comprar'}
+                            {buying ? 'Processing...' : 'Buy'}
                         </button>
                     </>
                 ) : (
-                    <p>El carrito está vacío.</p>
+                    <p>The cart is empty.</p>
                 )}
             </div>
         </div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import tecnologias from '@/app/data/tecnologias.json';
+import ProductCard from '@/components/Card/Card';
 
 export default function page() {
 

@@ -1,7 +1,7 @@
 /* /components/ProductCard/ProductCard.tsx */
 import React from 'react';
 
-interface ProductCardProps {
+interface CardProps {
     title: string;
     category: string;
     image: string;
@@ -11,7 +11,7 @@ interface ProductCardProps {
 
 import { useState } from 'react';
 
-const ProductCard: React.FC<ProductCardProps> = ({ title, category, image, price, description }) => {
+const Card: React.FC<CardProps> = ({ title, category, image, price, description }) => {
     const [isExpanded, setIsExpanded] = useState(false);
     return (
         <div className="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden transform transition hover:scale-105 hover:shadow-2xl">

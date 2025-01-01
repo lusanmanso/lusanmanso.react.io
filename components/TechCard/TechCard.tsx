@@ -26,9 +26,7 @@ const TechCard: React.FC<TechCardProps> = ({ title, image,description, rating}) 
                 <p className="text-lg font-semibold text-red-600">{rating.toFixed(2)} ★</p>
                {/* Description */}
                <p
-                  className={`text-sm text-gray-600 mt-2 text-justify transition-all duration-300 ease-in-out ${
-                  isExpanded ? '' : 'line-clamp-3'
-                  }`}
+                  className={`text-sm text-gray-600 mt-2 text-justify transition-all duration-300 ease-in-out`}
                >  
                   {description}
                 </p>

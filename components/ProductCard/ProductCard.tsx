@@ -1,4 +1,4 @@
-/* /components/ProductCard/ProductCard.tsx */}
+/* /components/ProductCard/ProductCard.tsx */
 import React from 'react';
 
 interface ProductCardProps {

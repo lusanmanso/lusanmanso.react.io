@@ -1,5 +1,4 @@
 /* /components/Card/Card.tsx */
-import { FallbackRouteParams } from 'next/dist/server/request/fallback-params';
 import React from 'react';
 
 interface TechCardProps {

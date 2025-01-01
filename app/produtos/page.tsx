@@ -5,12 +5,17 @@ import useSWR from 'swr';
 import { Product } from '@/models/interface';
 import ProductCard from '@/components/ProductCard/ProductCard';
 
+// Tipo extendido para incluir quantity
+interface CartProduct extends Product {
+    quantity: number;
+}
+
 export default function Products() {
     const fetcher = (url: string) => fetch(url).then(res => res.json());
     const { data: products, error, isLoading } = useSWR<Product[], Error>('/api/products', fetcher);
 
     // Estados principales
-    const [cart, setCart] = useState<Product[]>([]);
+    const [cart, setCart] = useState<CartProduct[]>([]);
     const [search, setSearch] = useState('');
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
     const [message, setMessage] = useState('');
@@ -44,7 +49,7 @@ export default function Products() {
             const existingProduct = prevCart.find((p) => p.id === product.id);
             if (existingProduct) {
                 return prevCart.map((p) =>
-                    p.id === product.id ? { ...p, quantity: (p.quantity || 1) + 1 } : p
+                    p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p
                 );
             }
             return [...prevCart, { ...product, quantity: 1 }];
@@ -59,7 +64,7 @@ export default function Products() {
     };
 
     // Calcular el total del carrito
-    const total = cart.reduce((sum, product) => sum + product.price * (product.quantity || 1), 0);
+    const total = cart.reduce((sum, product) => sum + product.price * product.quantity, 0);
 
     if (error) return <div>Failed to load</div>;
     if (isLoading) return <div>Loading...</div>;
@@ -104,7 +109,7 @@ export default function Products() {
                         {cart.map((item, index) => (
                             <div key={index} className="flex items-center justify-between border-b p-2">
                                 <span>{item.title}</span>
-                                <span>${(item.price * (item.quantity || 1)).toFixed(2)}</span>
+                                <span>${(item.price * item.quantity).toFixed(2)}</span>
                                 <button
                                     onClick={() => removeFromCart(index)}
                                     className="text-red-500"

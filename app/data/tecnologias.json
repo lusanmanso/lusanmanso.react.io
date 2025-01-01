@@ -4,62 +4,62 @@
       "title": "HTML",
       "image": "/images/html.png",
       "description": "Lenguaje de marcado para estructurar el contenido web.",
-      "rating": 4.5
+      "rating": 4
     },
     {
       "id": 2,
       "title": "CSS",
       "image": "/images/css.png",
       "description": "Estilo y diseño para páginas web.",
-      "rating": 4.7
+      "rating": 2
     },
     {
       "id": 3,
       "title": "JavaScript",
       "image": "/images/javascript.png",
       "description": "Lenguaje de programación para agregar interactividad a la web.",
-      "rating": 5.0
+      "rating": 2
     },
     {
       "id": 4,
       "title": "React.js",
       "image": "/images/react.png",
       "description": "Biblioteca para construir interfaces de usuario interactivas.",
-      "rating": 4.8
+      "rating": 5
     },
     {
       "id": 5,
       "title": "Next.js",
       "image": "/images/nextjs.png",
       "description": "Framework de React para aplicaciones web rápidas y escalables.",
-      "rating": 4.9
+      "rating": 3
     },
     {
       "id": 6,
       "title": "GitHub",
       "image": "/images/github.png",
       "description": "Plataforma para control de versiones y colaboración en proyectos.",
-      "rating": 4.6
+      "rating": 5
     },
     {
       "id": 7,
       "title": "API RESTful",
       "image": "/images/api.png",
       "description": "Estándar para construir APIs escalables y robustas.",
-      "rating": 4.4
+      "rating": 3
     },
     {
       "id": 8,
       "title": "Swagger",
       "image": "/images/swagger.png",
       "description": "Herramienta para documentar y probar APIs.",
-      "rating": 4.3
+      "rating": 3
     },
     {
       "id": 9,
       "title": "Vercel",
       "image": "/images/vercel.png",
       "description": "Plataforma de despliegue para proyectos de front-end.",
-      "rating": 4.7
+      "rating": 5
     }
   ]

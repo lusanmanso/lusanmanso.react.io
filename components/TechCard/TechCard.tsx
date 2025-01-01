@@ -23,7 +23,7 @@ const TechCard: React.FC<TechCardProps> = ({ title, image,description, rating}) 
             </div>
             <div className="p-4">
                 <h2 className="text-lg font-bold text-gray-800">{title}</h2>
-                <p className="text-lg font-semibold text-red-600">${rating.toFixed(2)}</p>
+                <p className="text-lg font-semibold text-red-600">{rating.toFixed(2)} ★</p>
                {/* Description */}
                <p
                   className={`text-sm text-gray-600 mt-2 text-justify transition-all duration-300 ease-in-out ${
@@ -32,19 +32,6 @@ const TechCard: React.FC<TechCardProps> = ({ title, image,description, rating}) 
                >  
                   {description}
                 </p>
-
-               {/*Button to close/expand the description */}
-               <button
-                  onClick={() => setIsExpanded(!isExpanded)}
-                  className="text-blue-500 hover:underline mt-2 text-xs"
-               >
-                  {isExpanded ? 'Read less' : 'Read more'}
-               </button>
-            </div>
-            <div className="px-4 pb-4">
-                <button className="w-full bg-blue-500 text-white text-sm font-semibold py-2 rounded-md hover:bg-blue-700 transition">
-                    Add to cart
-                </button>
             </div>
         </div>
     );

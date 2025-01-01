@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react';
 import tecnologias from '@/app/data/tecnologias.json';
 import TechCard from '@/components/TechCard/TechCard';

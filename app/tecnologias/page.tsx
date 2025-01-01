@@ -1,18 +1,23 @@
-import React from 'react'
+import React from 'react';
 import tecnologias from '@/app/data/tecnologias.json';
-import ProductCard from '@/components/Card/Card';
+import Card from '@/components/Card/Card';
 
-export default function page() {
-
-  // Change from JSON to string
-  const technologiesString = JSON.stringify(tecnologias, null, 2);
-
-  return (
-    <div style={{ padding: '16px' }}>
-      <h1>Tecnologías Aprendidas</h1>
-      {/* Renderizado en formato legible */}
-      <pre style={{ backgroundColor: '#f4f4f4', padding: '16px', borderRadius: '8px' }}> {technologiesString}
-      </pre>
-    </div>
-  );
+export default function Page() {
+    return (
+        <div style={{ padding: '16px' }}>
+            <h1>Tecnologías Aprendidas</h1>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                {tecnologias.map((tecnologia, index) => (
+                    <Card
+                        key={index}
+                        title={tecnologia.name}
+                        subtitle={tecnologia.category}
+                        image={tecnologia.image}
+                        description={tecnologia.description}
+                        extraInfo={tecnologia.usage}
+                    />
+                ))}
+            </div>
+        </div>
+    );
 }

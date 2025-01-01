@@ -2,12 +2,12 @@
 import React from 'react';
 import useSWR from 'swr';
 import { Product } from '@/models/interfaces/product';
-import  ProductCard from '@/components/ProductCard/ProductCard';
+import ProductCard from '@/components/ProductCard/ProductCard';
 
 export default function page() {
 
-  const fetcher = (url: string) => fetch(url).then(res => res.json())
-  const { data: products, error, isLoading } = useSWR<Product[], Error>('/api/products');
+  const fetcher = (url: string) => fetch(url).then(res => res.json());
+  const { data: products, error, isLoading } = useSWR<Product[], Error>('/api/products', fetcher);
   
   if (error) return <div>Failed to load</div>;
   if (isLoading) return <div>Loading...</div>;
@@ -17,11 +17,10 @@ export default function page() {
     {products.map((product) => (
       <ProductCard
         key={product.id}
-        id={product.id}
-        name={product.name}
+        title={product.title}
         price={product.price}
         description={product.description}
-        />
+      />
     ))}
   </>
 }

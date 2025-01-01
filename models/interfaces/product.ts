@@ -4,11 +4,14 @@ export interface Rating {
 }
 
 export interface Product {
-    id: number; // int
+    id: number;
     title: string;
-    price: number; // float
+    price: number;
     description: string;
     category: string;
-    image: string; // URL
-    rating: Rating; // nested object
-}
+    image: string;
+    rating: {
+      rate: number;
+      count: number;
+    };
+  }  

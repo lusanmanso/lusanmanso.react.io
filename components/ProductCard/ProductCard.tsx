@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Product } from '@/models/interfaces/product';
 
 interface ProductCardProps {
-  // product: Product;
+  product: Product;
   title: string;
   price: number;
   description: string;

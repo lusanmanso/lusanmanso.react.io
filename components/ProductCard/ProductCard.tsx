@@ -21,11 +21,22 @@ const ProductCard: React.FC<ProductCardProps> = ({ title, category, image, price
                 <h2 className="text-lg font-bold text-gray-800">{title}</h2>
                 <p className="text-sm text-gray-500">{category}</p>
                 <p className="text-lg font-semibold text-green-600">${price.toFixed(2)}</p>
-                {description && (
-                    <p className="text-sm text-gray-600 mt-2 text-justify">
-                        {description}
-                    </p>
-                )}
+               {/* Descripción */}
+               <p
+                  className={`text-sm text-gray-600 mt-2 text-justify ${
+                  isExpanded ? '' : 'line-clamp-3'
+                  }`}
+               >  
+                  {description}
+                </p>
+
+               {/* Botón para expandir/cerrar */}
+               <button
+                  onClick={() => setIsExpanded(!isExpanded)}
+                  className="text-blue-500 hover:underline mt-2"
+               >
+                  {isExpanded ? 'Leer menos' : 'Leer más'}
+               </button>
             </div>
             <div className="px-4 pb-4">
                 <button className="w-full bg-blue-500 text-white text-sm font-semibold py-2 rounded-md hover:bg-blue-700 transition">

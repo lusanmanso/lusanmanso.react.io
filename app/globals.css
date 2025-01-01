@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 body {
   /* Box Model */
   margin: 0;
@@ -18,7 +21,7 @@ body {
   background-attachment: fixed;
 
   /*Fuente*/
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans- serif;
 }
 
 main {

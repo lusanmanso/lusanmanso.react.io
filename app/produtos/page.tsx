@@ -9,12 +9,19 @@ import ProductCard from '@/components/ProductCard/ProductCard';
 
 export default function Municipalities() {
 
-    const fetcher = (url: string) => fetch(url).then(res => res.json())
+    const fetcher = (url: string) => fetch(url).then(res => {
+        if (!res.ok) {
+            throw new Error('An error occurred while fetching the data.');
+        }
+        return res.json();
+    });
     const { data: products, error, isLoading } = useSWR<Product[], Error>('/api/products');
     
     if (error) return <div>Failed to load</div>;
     if (isLoading) return <div>Loading...</div>;
-    if (!products) return <div>No data available</div>;
+    if (!products) {
+
+    };
 
     return <>
         {products.map((product) => (

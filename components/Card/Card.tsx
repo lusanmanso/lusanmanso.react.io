@@ -52,4 +52,4 @@ const Card: React.FC<CardProps> = ({ title, category, image, price, description 
     );
 };
 
-export default ProductCard;
+export default Card;

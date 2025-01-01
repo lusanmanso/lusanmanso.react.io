@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function Header() {
   return (
-    <header className="bg-white shadow-md p-4 fixed top-0 w-full z-10">
+    <header className="bg-white shadow-md p-4 fixed top-0 w-full z-10 h-15">
       <div className="container mx-auto flex justify-between items-center">
         <h1 className="text-lg font-bold">
           <Link href="/">React & Next.js</Link>

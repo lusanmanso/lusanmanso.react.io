@@ -1,9 +1,9 @@
-/* /components/MunicipalityCard/MunicipalityCard.tsx */
+/* /components/ProductCard/ProductCard.tsx */
 
 import React from 'react'
 import { Product } from '@/models/interface'
 
-export default function MunicipalityCard
-({id, title, image, price, description}: Product) {
+export default function ProductCard
+({title, image, price, description}: Product) {
    return <div>{title} {image} {price} {description}</div>
 }

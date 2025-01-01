@@ -11,7 +11,7 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ title, category, image, price, description }) => {
     return (
-        <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden transform transition hover:scale-105 hover:shadow-2xl">
+        <div className="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden transform transition hover:scale-105 hover:shadow-2xl">
             <img
                 src={image}
                 alt={title}
@@ -20,7 +20,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ title, category, image, price
             <div className="p-4">
                 <h2 className="text-lg font-bold text-gray-800">{title}</h2>
                 <p className="text-sm text-gray-500">{category}</p>
-                <p className="text-lg font-semibold text-green-600">${price}</p>
+                <p className="text-lg font-semibold text-green-600">${price.toFixed(2)}</p>
                 {description && (
                     <p className="text-sm text-gray-600 mt-2">
                         {description}

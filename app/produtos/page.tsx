@@ -14,17 +14,17 @@ export default function Municipalities() {
     if (!products) return <div>No products available</div>;
 
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
           {products.map((product) => (
-              <ProductCard
-                  key={product.id}
-                  title={product.title}
-                  category={product.category}
-                  image={product.image}
-                  price={product.price}
-                  description={product.description}
-              />
+            <ProductCard
+              key={product.id}
+              title={product.title}
+              category={product.category}
+              image={product.image}
+              price={product.price}
+              description={product.description}
+            />
           ))}
-      </div>
-  );
+        </div>
+      );
 }

@@ -15,8 +15,6 @@ export default function RootLayout({
       <body>
         <Header />
         {children}
-        <Link href="/produtos">Produtos</Link>
-        <Link href="/tecnologias">Tecnologias</Link>
         <Footer />
       </body>
     </html>

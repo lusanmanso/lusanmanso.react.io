@@ -11,10 +11,14 @@ body {
   align-items: center;
 
   /* Fundo e Estética */
-  background: url('https://cdn.pixabay.com/photo/2016/06/02/02/33/triangles-1430105_1280.png');
+  background: url('https://cdn.pixabay.com/photo/2022/06/12/22/48/gradient-7258997_1280.png');
   background-size: cover; 
   background-position: center; 
   background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  /*Fuente*/
+  font-family: 'Roboto', sans-serif;
 }
 
 main {

@@ -22,7 +22,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ title, category, image, price
                 <p className="text-sm text-gray-500">{category}</p>
                 <p className="text-lg font-semibold text-green-600">${price.toFixed(2)}</p>
                 {description && (
-                    <p className="text-sm text-gray-600 mt-2">
+                    <p className="text-sm text-gray-600 mt-2 text-justify">
                         {description}
                     </p>
                 )}

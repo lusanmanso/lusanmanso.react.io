@@ -14,7 +14,7 @@ export default function RootLayout({
     <html lang="pt" className="bg-custom-bg bg-cover bg-center min-h-screen font-sans">
       <body>
         <Header />
-        <main className="flex-grow container mx-auto p-4">{children}</main>
+        <main className="flex-grow container mx-auto p-4 mt-16">{children}</main>
         <Footer />
       </body>
     </html>

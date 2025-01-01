@@ -19,6 +19,7 @@ export default function Products() {
     const [search, setSearch] = useState('');
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
     const [message, setMessage] = useState('');
+    const [buying, setBuying] = useState(false);
 
     // Cargar el carrito desde localStorage
     useEffect(() => {
@@ -66,6 +67,30 @@ export default function Products() {
     // Calcular el total del carrito
     const total = cart.reduce((sum, product) => sum + product.price * product.quantity, 0);
 
+    // Procesar compra
+    const handleBuy = async () => {
+        setBuying(true);
+        try {
+            const response = await fetch('/api/deisishop/buy', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ cart }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Error al procesar la compra.');
+            }
+
+            const result = await response.json();
+            setMessage(`Compra exitosa. ID de la orden: ${result.order_id}`);
+            setCart([]); // Vaciar el carrito tras la compra
+        } catch (error) {
+            setMessage(error.message || 'Hubo un problema con la compra.');
+        } finally {
+            setBuying(false);
+        }
+    };
+
     if (error) return <div>Failed to load</div>;
     if (isLoading) return <div>Loading...</div>;
     if (!products) return <div>No products available</div>;
@@ -96,7 +121,7 @@ export default function Products() {
                         image={product.image}
                         price={product.price}
                         description={product.description}
-                        onAddToCart={() => addToCart(product)} // Usar el botón de ProductCard
+                        onAddToCart={() => addToCart(product)}
                     />
                 ))}
             </div>
@@ -119,6 +144,15 @@ export default function Products() {
                             </div>
                         ))}
                         <div className="text-right font-bold mt-4">Total: ${total.toFixed(2)}</div>
+                        <button
+                            onClick={handleBuy}
+                            disabled={buying}
+                            className={`w-full mt-4 p-2 ${
+                                buying ? 'bg-gray-500' : 'bg-blue-500 hover:bg-blue-700'
+                            } text-white font-bold rounded`}
+                        >
+                            {buying ? 'Procesando...' : 'Comprar'}
+                        </button>
                     </>
                 ) : (
                     <p>El carrito está vacío.</p>

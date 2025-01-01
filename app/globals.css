@@ -1,37 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 body {
-  /* Box Model */
   margin: 0;
-  padding: 0;
-  height: 100vh;
-
-  /* Layout e Posicionamento */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  /* Fundo e Estética */
-  background: url('https://cdn.pixabay.com/photo/2022/06/12/22/48/gradient-7258997_1280.png');
-  background-size: cover; 
-  background-position: center; 
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-
-  /*Fuente*/
-  font-family: 'Roboto', sans- serif;
-}
-
-main {
-  /* Reset e Box Model */
-  width: 320px;
-  height: 450px;
-  padding: 20px;
-  border-radius: 20px;
-  overflow-y: auto;
-
-  /* Fundo */
-  background: whitesmoke;
 }

@@ -11,10 +11,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt">
+    <html lang="pt" className="bg-custom-bg bg-cover bg-center min-h-screen font-sans">
       <body>
         <Header />
-        {children}
+        <main className="flex-grow container mx-auto p-4">{children}</main>
         <Footer />
       </body>
     </html>
